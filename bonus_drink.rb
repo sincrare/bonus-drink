@@ -17,15 +17,13 @@ class BonusDrink
     drank = 0
     remain = amount
 
-    while remain > 0
-      if remain < BonusBy then
-        drank += remain
-        break;
-      else
-        bonus = remain / BonusBy * BonusCount
-        drank += remain - remain % BonusBy
-        remain = remain % BonusBy + bonus
-      end
+    if remain < BonusBy then
+      drank += remain
+    else
+      bonus = remain / BonusBy * BonusCount
+      drank += remain - remain % BonusBy
+      remain = remain % BonusBy + bonus
+      drank += total_count_for(remain)
     end
 
     return drank
